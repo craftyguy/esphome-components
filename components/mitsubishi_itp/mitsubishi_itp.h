@@ -98,6 +98,10 @@ class MitsubishiUART : public PollingComponent, public climate::Climate, public 
   // Enables the recall setpoint feature
   void set_recall_setpoint(const bool enabled) { recall_setpoint_ = enabled; }
 
+  // Returns the heat/cool setpoints as last reported by the connected MHK thermostat.
+  float get_heat_setpoint() const { return mhk_state_.heat_setpoint_; }
+  float get_cool_setpoint() const { return mhk_state_.cool_setpoint_; }
+
 #ifdef USE_TIME
   void set_time_source(time::RealTimeClock *rtc) { time_source_ = rtc; }
 #endif
